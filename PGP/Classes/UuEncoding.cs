@@ -49,7 +49,7 @@ namespace PGP.Classes
                         outputFile.WriteLine("end");
                     }
 
-                    if (recipientPublicKeyPath != null)
+                    if (!string.IsNullOrEmpty(recipientPublicKeyPath))
                     {
                         string uueeOutputFilePath = uueOutputFilePath + "e";
                         PgpEncryption.EncryptFile(uueOutputFilePath, uueeOutputFilePath, recipientPublicKeyPath, true, true);
@@ -74,7 +74,7 @@ namespace PGP.Classes
             {
                 if (string.IsNullOrWhiteSpace(privateKeyPath))
                 {
-                    throw new Exception($"If rebuilding from an encrypyed file (*.uuee), you must also pass a path to the private key file.");
+                    throw new Exception("If rebuilding from an encrypyed file (*.uuee), you must also pass a path to the private key file.");
                 }
                 
                 if (!File.Exists(privateKeyPath))
@@ -111,7 +111,7 @@ namespace PGP.Classes
                     }
                     else
                     {
-                        currentFilePath = Path.Combine(startUueFileInfo.DirectoryName, $"{originalFileName}-{fileNumber}.uue");
+                        currentUueIndexPath = Path.Combine(startUueFileInfo.DirectoryName, $"{originalFileName}-{fileNumber}.uue");
                     }
 
                     if (!File.Exists(currentUueIndexPath))

@@ -185,15 +185,18 @@ namespace PGP
                 folderBrowserDialog1.SelectedPath = sourceFileInfo.Directory.FullName;
                 folderBrowserDialog1.ShowDialog();
 
-                string myPublicKey = @"D:\Code\Save\PGP\PGP\bin\Debug\Keys\MyKeys\MyPublicKey.txt";
-                UuEncoding.UuEncode(openFileDialog.FileName, folderBrowserDialog1.SelectedPath, 324, myPublicKey);
-                Cursor.Current = Cursors.Default;
-
-                var seeFiles = MessageBox.Show("Would you like to navigate to open the output folder?", "Open Output", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                
-                if (seeFiles == DialogResult.Yes)
+                if (folderBrowserDialog1.SelectedPath != "")
                 {
-                    WindowsUtilities.OpenFolderInWindowsExplorer(folderBrowserDialog1.SelectedPath);
+                    //UuEncoding.UuEncode(openFileDialog.FileName, folderBrowserDialog1.SelectedPath, 324, ApplicationSettings.PublicKeyPath);
+                    UuEncoding.UuEncode(openFileDialog.FileName, folderBrowserDialog1.SelectedPath, 324, "");
+                    Cursor.Current = Cursors.Default;
+
+                    var seeFiles = MessageBox.Show("Would you like to navigate to open the output folder?", "Open Output", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (seeFiles == DialogResult.Yes)
+                    {
+                        WindowsUtilities.OpenFolderInWindowsExplorer(folderBrowserDialog1.SelectedPath);
+                    }
                 }
             }
         }
