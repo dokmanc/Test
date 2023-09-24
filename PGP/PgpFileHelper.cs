@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClassLibrary
+namespace PGP
 {
-    public class Class1
+    class PgpFileHelper
     {
+
     }
 }

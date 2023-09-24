@@ -1,6 +1,6 @@
-﻿namespace Client
+﻿namespace PGP
 {
-    partial class Form1
+    partial class EditorForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,33 +28,41 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.txtEditor = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // button1
+            // txtEditor
             // 
-            this.button1.Location = new System.Drawing.Point(114, 123);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(90, 62);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.txtEditor.AcceptsReturn = true;
+            this.txtEditor.AcceptsTab = true;
+            this.txtEditor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtEditor.Location = new System.Drawing.Point(0, 0);
+            this.txtEditor.Multiline = true;
+            this.txtEditor.Name = "txtEditor";
+            this.txtEditor.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtEditor.Size = new System.Drawing.Size(800, 450);
+            this.txtEditor.TabIndex = 0;
+            this.txtEditor.WordWrap = false;
+            this.txtEditor.TextChanged += new System.EventHandler(this.txtEditor_TextChanged);
             // 
-            // Form1
+            // EditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Controls.Add(this.txtEditor);
+            this.Name = "EditorForm";
+            this.TabText = "Editor";
+            this.Text = "Editor";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EditorForm_FormClosing);
+            this.Load += new System.EventHandler(this.Editor_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtEditor;
     }
 }
-
