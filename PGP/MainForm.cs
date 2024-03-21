@@ -1,4 +1,5 @@
 ﻿using PGP.Classes;
+using PGP.Forms;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -176,6 +177,18 @@ namespace PGP
 
             if (dialogResult == DialogResult.OK)
             {
+
+                EncryptFileForm encryptFileForm = new EncryptFileForm();
+                var recipientResult = encryptFileForm.ShowDialog();
+
+                if (recipientResult == DialogResult.Cancel)
+                {
+                    return;
+                }
+
+                //string recipientPublicKey = ((SendToItem)SendToDropdown.SelectedItem).FileName;
+                SendToItem recipient = encryptFileForm.SelectedRecipient;
+
                 Cursor.Current = Cursors.WaitCursor;
 
                 FileInfo sourceFileInfo = new FileInfo(openFileDialog.FileName);
@@ -183,12 +196,12 @@ namespace PGP
                 folderBrowserDialog1 = new FolderBrowserDialog();
                 folderBrowserDialog1.Description = "Select the output location to save the encoded files:";
                 folderBrowserDialog1.SelectedPath = sourceFileInfo.Directory.FullName;
-                folderBrowserDialog1.ShowDialog();
+                DialogResult result = folderBrowserDialog1.ShowDialog();
 
-                if (folderBrowserDialog1.SelectedPath != "")
+                if (result == DialogResult.OK)
                 {
-                    //UuEncoding.UuEncode(openFileDialog.FileName, folderBrowserDialog1.SelectedPath, 324, ApplicationSettings.PublicKeyPath);
-                    UuEncoding.UuEncode(openFileDialog.FileName, folderBrowserDialog1.SelectedPath, 324, "");
+                  //UuEncoding.UuEncode(openFileDialog.FileName, folderBrowserDialog1.SelectedPath, 324, ApplicationSettings.PublicKeyPath);
+                    UuEncoding.UuEncode(openFileDialog.FileName, folderBrowserDialog1.SelectedPath, 324, recipient.FileName);
                     Cursor.Current = Cursors.Default;
 
                     var seeFiles = MessageBox.Show("Would you like to navigate to open the output folder?", "Open Output", MessageBoxButtons.YesNo, MessageBoxIcon.Question);

@@ -169,20 +169,6 @@ namespace PGP
             }
         }
 
-
-
-        private class SendToItem
-        {
-            public string FileName { get; set; }
-
-            public string DisplayName { get; set; }
-
-            public override string ToString()
-            {
-                return DisplayName;
-            }
-        }
-
         private void SendToDropdown_SelectedIndexChanged(object sender, EventArgs e)
         {
             providedPassPhraseMemoryCache = false;

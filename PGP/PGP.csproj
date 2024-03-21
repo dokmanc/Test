@@ -104,6 +104,12 @@
     <Compile Include="EditorForm.Designer.cs">
       <DependentUpon>EditorForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\EncryptFileForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EncryptFileForm.Designer.cs">
+      <DependentUpon>EncryptFileForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,7 +117,6 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="PgpEncryption.cs" />
-    <Compile Include="PgpFileHelper.cs" />
     <Compile Include="PgpForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +131,7 @@
     <Compile Include="CreateKeysForm.Designer.cs">
       <DependentUpon>CreateKeysForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Classes\SendToItem.cs" />
     <Compile Include="UueForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,6 +146,9 @@
     </Compile>
     <EmbeddedResource Include="EditorForm.resx">
       <DependentUpon>EditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EncryptFileForm.resx">
+      <DependentUpon>EncryptFileForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
